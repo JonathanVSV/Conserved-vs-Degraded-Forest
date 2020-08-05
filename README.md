@@ -1,2 +1,2 @@
 # Conserved-vs-Degraded-Forest
-Analysis scripts and data
+This repository contains the data and scripts used to test the differences between conserved and degraded forests in the Ayuquila River watershed, Mexico. The analysis can be consulted in the analysis.R file, while the 
