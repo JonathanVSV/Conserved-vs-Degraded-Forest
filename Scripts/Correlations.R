@@ -1,34 +1,38 @@
 library(corrplot)
-library(Hmisc)
 
 # Read data-------------------------------------------
 df <- read.csv("plots_data.csv")
 
+# Conserved and Degraded forest plots (all together)-----------------------
 ## Get variables to perform correlation
-df <- as.matrix(df[,c("Cobertura","AB_m2.ha","biomasa_mg.ha","Total_ramas","total_arboles")])
+df_all <- as.matrix(df[,c("Cobertura","AB_m2.ha","biomasa_mg.ha","Total_ramas","total_arboles")])
 
 ## Get correlation matrix
-M<-cor(df, method = "kendall")
-M
+cor(df_all, method = "kendall")
 
 ## Get significance values of the correlations
-p.mat<-cor.mtest(df)$p
-p.mat
+cor.mtest(df_all)$p
 
-# Do corrplot-----------------------------------------------
-## Get corrplot using the two previously calculated matrices
-corrplot(M, method="circle", type="upper", order="hclust", 
-         p.mat = p.mat, sig.level = 0.05)
+# Conserved forest plots -----------------------------
+## Get variables to perform correlation, subsetting data to conserved forest plots
+conserved <- df$tipo_bosque == "conserved"
+df_conserved <- as.matrix(df[conserved,c("Cobertura","AB_m2.ha","biomasa_mg.ha","Total_ramas","total_arboles")])
 
-## Save as png
-png("Corr_Environ.png",
-    width = 10,
-    height = 12,
-    #pointsize = 300,
-    res = 300,
-    units = "cm",
-    type = "cairo")
-corrplot(M, method="circle", type="upper", order="hclust",
-         p.mat = p.mat, sig.level = 0.05,tl.cex = 1, number.cex = 1,cl.cex = 1, pch.cex = 1)
-dev.off()
+## Get correlation matrix
+cor(df_conserved, method = "kendall")
+
+## Get significance values of the correlations
+cor.mtest(df_conserved)$p
+
+# Degraded forest plots --------------------------------
+## Get variables to perform correlation, subsetting data to degraded forest plots
+degraded <- df$tipo_bosque == "degraded"
+df_degraded <- as.matrix(df[degraded,c("Cobertura","AB_m2.ha","biomasa_mg.ha","Total_ramas","total_arboles")])
+
+## Get correlation matrix
+cor(df_degraded, method = "kendall")
+
+## Get significance values of the correlations
+cor.mtest(df_degraded)$p
+
 

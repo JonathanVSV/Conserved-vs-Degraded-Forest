@@ -14,7 +14,7 @@ df <- df %>%
                names_to = "Attribute",
                values_to = "value") 
 
-# Build barplots --------------------
+# Build boxplots --------------------
 
 ## First plot
 p1 <- df  %>%
