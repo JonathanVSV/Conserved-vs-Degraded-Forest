@@ -8,7 +8,7 @@ df <- read.csv("plots_data.csv")
 # Transform data into long format and calculate mean and se by tipo_bosque and Attribute
 df <- df %>%
   # Select columns that are going to be used
-  select(Sitio, tipo_bosque,Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha) %>%
+  select(Sitio, tipo_bosque, Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha) %>%
   # Change data into long format
   pivot_longer(cols = c(Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha),
                names_to = "Attribute",

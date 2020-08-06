@@ -6,7 +6,7 @@ library(broom)
 
 # Read and prepare data------------------------------------
 
-df <- read.csv("plots_data.csv")
+df <- read.csv("plots_data.csv", stringsAsFactors = T)
 
 ## Change data form wide to long format
 df_long <- df %>%
