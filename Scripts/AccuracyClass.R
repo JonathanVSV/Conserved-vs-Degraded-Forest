@@ -22,7 +22,7 @@ func_nest <- function(df, vars_to_nest, new_col) {
   nest(df, !!new_col := {{ vars_to_nest }})
 }
 
-resul <- df_long %>%
+df_long %>%
   # Remove columns that are not going to be used
   select(-Sitio) %>%
   # Use func_nest to nest the data for each attribute
