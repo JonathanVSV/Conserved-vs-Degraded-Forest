@@ -6,4 +6,4 @@ The scripts and data can be found inside the Scripts folder. The Mann-Whitney te
 
 To download all the files click on the green button "Code" and download as zip or open with Github Desktop App.
 
-![Ayuquila forest](/Img/Ayuquila.jpg?raw=true "Picture of Ayuquila tropical dry forest")
+![Ayuquila forest](/Img/Ayuquila.jpg?raw=true "Picture of a part of the Ayuquila River watershed")

@@ -14,7 +14,7 @@ df_long <- df %>%
                names_to = "Attribute",
                values_to = "value")
 
-# Calculate Gini Index---------------------------------------
+# Calculate Classification Accuracy ---------------------------------------
 
 ## Define nesting function
 ## Taken from: https://github.com/tidyverse/tidyr/issues/769#issuecomment-537624093
@@ -36,7 +36,7 @@ df_long %>%
   # Rename unnested columnes
   rename("fitted_vals2" = "x", "true" = "x$tipo_bosque") %>%
   # Transfrom binomial probs into factor levels
-  mutate(fitted = ifelse(fitted_vals2 >= 0.5, "degraded", "conserved")) %>%
+  mutate(fitted = ifelse(fitted_vals2 > 0.5, "degraded", "conserved")) %>%
   # Eliminate columns that we are not going to use
   select(c(-data_nest, -fit, -fitted_vals2)) %>%
   # Set columns as factors
