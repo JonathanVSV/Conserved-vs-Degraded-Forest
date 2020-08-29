@@ -8,7 +8,7 @@ df <- read.csv("plots_data.csv")
 # Transform data into long format and calculate mean and se by tipo_bosque and Attribute
 df <- df %>%
   # Select columns that are going to be used
-  select(Sitio, tipo_bosque, Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha) %>%
+  select(Sitio, tipo_bosque,Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha) %>%
   # Change data into long format
   pivot_longer(cols = c(Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha),
                names_to = "Attribute",
@@ -26,9 +26,9 @@ p1 <- df  %>%
   # Add boxplot
   geom_boxplot(fill = "gray90", width = 0.6) +
   # Add threshold line
-  geom_hline(yintercept = 8.02, col = "red", lty = "longdash")+
+  geom_hline(yintercept = 9.45, col = "red", lty = "longdash")+
   # Add text for the threshold's value
-  geom_text(aes(x = 1.5, y = 9, label = "8.02")) +
+  geom_text(aes(x = 1.5, y = 10.3, label = "9.45")) +
   # Change the x and y axis titles
   labs(x = "Forest type", y = expression(bold("Basal"~"area"~"("*"m"^2*"/"*"ha"*")"))) +
   # Change x axis levels
@@ -52,8 +52,8 @@ p2 <- df  %>%
   ggplot(aes(x = tipo_bosque, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) +
-  geom_hline(yintercept = 23.3, col = "red", lty = "longdash")+
-  geom_text(aes(x = 1.5, y = 26, label = "23.3"))+
+  geom_hline(yintercept = 27.5, col = "red", lty = "longdash")+
+  geom_text(aes(x = 1.5, y = 29.5, label = "27.5"))+
   labs(x = "Forest type", y = "Biomass (Mg/ha)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
   scale_y_continuous(breaks = seq(0,70,10),
@@ -70,8 +70,8 @@ p3 <- df  %>%
   ggplot(aes(x = tipo_bosque, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
-  geom_hline(yintercept = 90.2, col = "red", lty = "longdash")+
-  geom_text(aes(x = 1.5, y = 94, label = "90.2"))+
+  geom_hline(yintercept = 90.9, col = "red", lty = "longdash")+
+  geom_text(aes(x = 1.5, y = 94.5, label = "90.9"))+
   labs(x = "Forest type", y = "Canopy cover (%)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
   scale_y_continuous(breaks = seq(0,100,25),
@@ -88,8 +88,8 @@ p4 <- df  %>%
   ggplot(aes(x = tipo_bosque, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
-  geom_hline(yintercept = 4.88, col = "red", lty = "longdash")+
-  geom_text(aes(x = 1.5, y = 5.15, label = "4.88"))+
+  geom_hline(yintercept = 5.30, col = "red", lty = "longdash")+
+  geom_text(aes(x = 1.5, y = 5.60, label = "5.30"))+
   labs(x = "Forest type", y = "Mean height (m)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
   scale_y_continuous(breaks = seq(0,8,2),
@@ -115,7 +115,7 @@ p_final <- plot_grid(p1,
 p_final
 
 ## Save joined plot
-save_plot("Final_boxplot.jpg", p_final, 
+save_plot("Final_boxplot_beta.jpg", p_final, 
           base_height = 8,
           base_asp = 0.85)
 
