@@ -5,12 +5,12 @@ library(plotrix)
 # Read data -------------------
 df <- read.csv("plots_data.csv")
 
-# Transform data into long format and calculate mean and se by tipo_bosque and Attribute
+# Transform data into long format and calculate mean and se by Forest_type and Attribute
 df <- df %>%
   # Select columns that are going to be used
-  select(Sitio, tipo_bosque,Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha) %>%
+  select(Plot, Forest_type,Canopy_cover, BA, Mean_height, AGB) %>%
   # Change data into long format
-  pivot_longer(cols = c(Cobertura, AB_m2.ha, Media_altura, biomasa_mg.ha),
+  pivot_longer(cols = c(Canopy_cover, BA, Mean_height, AGB),
                names_to = "Attribute",
                values_to = "value") 
 
@@ -19,9 +19,9 @@ df <- df %>%
 ## First plot
 p1 <- df  %>%
   # Filter data just to stay with basal area data
-  filter(Attribute == "AB_m2.ha") %>%
+  filter(Attribute == "BA") %>%
   # Do ggplot
-  ggplot(aes(x = tipo_bosque, 
+  ggplot(aes(x = Forest_type, 
              y = value)) + 
   # Add boxplot
   geom_boxplot(fill = "gray90", width = 0.6) +
@@ -48,8 +48,8 @@ p1
 
 ## Second plot
 p2 <- df  %>%
-  filter(Attribute == "biomasa_mg.ha") %>%
-  ggplot(aes(x = tipo_bosque, 
+  filter(Attribute == "AGB") %>%
+  ggplot(aes(x = Forest_type, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) +
   geom_hline(yintercept = 27.5, col = "red", lty = "longdash")+
@@ -66,8 +66,8 @@ p2
 
 ## Third plot
 p3 <- df  %>%
-  filter(Attribute == "Cobertura") %>%
-  ggplot(aes(x = tipo_bosque, 
+  filter(Attribute == "Canopy_cover") %>%
+  ggplot(aes(x = Forest_type, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
   geom_hline(yintercept = 90.9, col = "red", lty = "longdash")+
@@ -84,8 +84,8 @@ p3
 
 ## Fourth plot
 p4 <- df  %>%
-  filter(Attribute == "Media_altura") %>%
-  ggplot(aes(x = tipo_bosque, 
+  filter(Attribute == "Mean_height") %>%
+  ggplot(aes(x = Forest_type, 
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
   geom_hline(yintercept = 5.30, col = "red", lty = "longdash")+
