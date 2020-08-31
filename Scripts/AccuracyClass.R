@@ -1,8 +1,8 @@
+# Packages that are needed--------------------------------
 library(tidyverse)
 library(caret)
 
 # Read and prepare data------------------------------------
-
 df <- read.csv("plots_data.csv", stringsAsFactors = T)
 
 ## Change data form wide to long format

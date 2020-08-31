@@ -1,3 +1,4 @@
+# Packages that are needed--------------------------------
 library(tidyverse)
 library(cowplot)
 library(plotrix)
@@ -28,7 +29,7 @@ p1 <- df  %>%
   # Add threshold line
   geom_hline(yintercept = 9.45, col = "red", lty = "longdash")+
   # Add text for the threshold's value
-  geom_text(aes(x = 1.5, y = 10.3, label = "9.45")) +
+  geom_text(aes(x = 1.5, y = 10.2, label = "9.45")) +
   # Change the x and y axis titles
   labs(x = "Forest type", y = expression(bold("Basal"~"area"~"("*"m"^2*"/"*"ha"*")"))) +
   # Change x axis levels
@@ -54,7 +55,7 @@ p2 <- df  %>%
   geom_boxplot(fill = "gray90", width = 0.6) +
   geom_hline(yintercept = 27.5, col = "red", lty = "longdash")+
   geom_text(aes(x = 1.5, y = 29.5, label = "27.5"))+
-  labs(x = "Forest type", y = "Biomass (Mg/ha)") +
+  labs(x = "Forest type", y = "AGB (Mg/ha)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
   scale_y_continuous(breaks = seq(0,70,10),
                      limits = c(0,70),
@@ -71,11 +72,11 @@ p3 <- df  %>%
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
   geom_hline(yintercept = 90.9, col = "red", lty = "longdash")+
-  geom_text(aes(x = 1.5, y = 94.5, label = "90.9"))+
+  geom_text(aes(x = 1.5, y = 93.8, label = "90.9"))+
   labs(x = "Forest type", y = "Canopy cover (%)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
-  scale_y_continuous(breaks = seq(0,100,25),
-                     limits = c(0,100),
+  scale_y_continuous(breaks = seq(10,100,30),
+                     limits = c(10,100),
                      expand = c(0,0)) +
   theme_cowplot()+ 
   theme(axis.title = element_text(face = "bold"),
@@ -89,11 +90,11 @@ p4 <- df  %>%
              y = value)) + 
   geom_boxplot(fill = "gray90", width = 0.6) + 
   geom_hline(yintercept = 5.30, col = "red", lty = "longdash")+
-  geom_text(aes(x = 1.5, y = 5.60, label = "5.30"))+
+  geom_text(aes(x = 1.5, y = 5.50, label = "5.30"))+
   labs(x = "Forest type", y = "Mean height (m)") +
   scale_x_discrete(labels = c("Conserved\nforest","Degraded\nforest")) +
-  scale_y_continuous(breaks = seq(0,8,2),
-                     limits = c(0,8),
+  scale_y_continuous(breaks = seq(2,8,2),
+                     limits = c(2,8),
                      expand = c(0,0)) +
   theme_cowplot()+ 
   theme(axis.title = element_text(face = "bold"),
