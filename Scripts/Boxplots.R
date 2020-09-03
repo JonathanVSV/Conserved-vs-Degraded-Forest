@@ -9,7 +9,7 @@ df <- read.csv("plots_data.csv")
 # Transform data into long format and calculate mean and se by Forest_type and Attribute
 df <- df %>%
   # Select columns that are going to be used
-  select(Plot, Forest_type,Canopy_cover, BA, Mean_height, AGB) %>%
+  dplyr::select(Plot, Forest_type,Canopy_cover, BA, Mean_height, AGB) %>%
   # Change data into long format
   pivot_longer(cols = c(Canopy_cover, BA, Mean_height, AGB),
                names_to = "Attribute",

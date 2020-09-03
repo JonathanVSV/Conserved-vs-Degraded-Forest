@@ -8,7 +8,7 @@ df <- read.csv("plots_data.csv", stringsAsFactors = T)
 ## Change data form wide to long format
 df_long <- df %>%
   # Indicate column names to use
-  select(Plot, Forest_type,Canopy_cover, BA, Mean_height, BA, Mean_height, Density_branches, Density_trees) %>%
+  dplyr::select(Plot, Forest_type,Canopy_cover, BA, Mean_height, BA, Mean_height, Density_branches, Density_trees) %>%
   # Prepare data: long format. Indicate which columns are going into long format
   pivot_longer(cols = c(Canopy_cover, BA, Mean_height, BA, Mean_height, Density_branches, Density_trees),
                names_to = "Attribute",
@@ -24,7 +24,7 @@ func_nest <- function(df, vars_to_nest, new_col) {
 
 df_long %>%
   # Remove columns that are not going to be used
-  select(-Plot) %>%
+  dplyr::select(-Plot) %>%
   # Use func_nest to nest the data for each attribute
   func_nest(-Attribute, "data_nest") %>%
   # Get the glm fit, and get the fitted values
@@ -38,7 +38,7 @@ df_long %>%
   # Transfrom binomial probs into factor levels
   mutate(fitted = ifelse(fitted_vals2 > 0.5, "degraded", "conserved")) %>%
   # Eliminate columns that we are not going to use
-  select(c(-data_nest, -fit, -fitted_vals2)) %>%
+  dplyr::select(c(-data_nest, -fit, -fitted_vals2)) %>%
   # Set columns as factors
   mutate_at(vars(fitted, true), function(x) as.factor(x)) %>%
   # Nesta data 
