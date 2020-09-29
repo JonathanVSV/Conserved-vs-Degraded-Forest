@@ -6,4 +6,7 @@ The scripts and data can be found inside the Scripts folder. The scripts that co
 
 To download all the files click on the green button "Code" and download as zip or open with the Github Desktop App.
 
+The complete article can be consulted at: 
+Gao, Y.; Skutsch, M.; Jiménez Rodríguez, D.L.; Solórzano, J.V. (2020). Identifying Variables to Discriminate between Conserved and Degraded Forest and to Quantify the Differences in Biomass. *Forests* 11, 1020. https://doi.org/10.3390/f11091020
+
 ![Ayuquila forest](/Img/Ayuquila.jpg?raw=true "Picture of a part of the Ayuquila River watershed")
